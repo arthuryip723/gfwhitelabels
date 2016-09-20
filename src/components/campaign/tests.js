@@ -39,5 +39,20 @@ describe('Campaign Component', function() {
         const stub = $.ajax;
         new routes.detail();
         stub.called.eq.true;
+        expect($('top-info-wrap-item').html()).to.contain('Common Equity');
+        expect($('top-info-wrap-item').html()).to.contain('$0');
+        expect($('top-info-wrap-item').html()).to.contain('120');
+
+        expect($('.campaigndetail .container').html()).to.contain('fsafdsa');
+        expect($('.campaigndetail .sity-detail').html()).to.contain('Atlantic City, PR');
+        expect($('.campaigndetail .date-detail').html()).to.contain('Founded in Nov 1983');
+
+        expect($('.campaigndetail .progress_bar_container').html()).to.contain('Less than 20% ');
+
+        expect($('.campaigndetail .right-block-investors').html()).to.contain('$80,000 - $60,000');
+        expect($('.campaigndetail .right-block-investors').html()).to.contain('$250');
+
+        expect($('#about').html()).to.contain('$250');
+
     })
 })
