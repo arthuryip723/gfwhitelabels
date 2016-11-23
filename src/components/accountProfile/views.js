@@ -7,6 +7,10 @@ const formatHelper = require('helpers/formatHelper');
 let countries = {};
 _.each(require('helpers/countries.js'), (c) => { countries[c.code] = c.name; });
 
+const e =   function () {
+    return 10 * Math.random() - 5;
+  };
+
 module.exports = {
   profile: Backbone.View.extend(_.extend({
     template: require('./templates/profile.pug'),
@@ -258,6 +262,33 @@ module.exports = {
         investors: 333,
         views: 123456,
         interactions: 4567,
+        views_history: [    [1, e() - 5],
+                    [2, e() - 5],
+                    [3, e() - 5],
+                    [4, 6 + e()],
+                    [5, 5 + e()],
+                    [6, 20 + e()],
+                    [7, 25 + e()],
+                    [8, 36 + e()],
+                    [9, 26 + e()],
+                    [10, 38 + e()],
+                    [11, 39 + e()],
+                    [12, 50 + e()],],
+        invested_amount_history: [
+                    [1, e()],
+                    [2, e()],
+                    [3, 2 + e()],
+                    [4, 3 + e()],
+                    [5, 5 + e()],
+                    [6, 10 + e()],
+                    [7, 15 + e()],
+                    [8, 20 + e()],
+                    [9, 25 + e()],
+                    [10, 30 + e()],
+                    [11, 35 + e()],
+                    [12, 25 + e()],
+        ],
+
       }
     },
     events: {
@@ -330,6 +361,38 @@ module.exports = {
         console.log(msg);
         $('.notification-container ul').append($('<li>').html('<a>' + msg + '</a>'));
       });
+
+                  var t = [
+                    [1, e()],
+                    [2, e()],
+                    [3, 2 + e()],
+                    [4, 3 + e()],
+                    [5, 5 + e()],
+                    [6, 10 + e()],
+                    [7, 15 + e()],
+                    [8, 20 + e()],
+                    [9, 25 + e()],
+                    [10, 30 + e()],
+                    [11, 35 + e()],
+                    [12, 25 + e()],
+                ],
+                a = [
+                    [1, e() - 5],
+                    [2, e() - 5],
+                    [3, e() - 5],
+                    [4, 6 + e()],
+                    [5, 5 + e()],
+                    [6, 20 + e()],
+                    [7, 25 + e()],
+                    [8, 36 + e()],
+                    [9, 26 + e()],
+                    [10, 38 + e()],
+                    [11, 39 + e()],
+                    [12, 50 + e()],
+                ];
+                dashboardPlot(this.model.campaign.invested_amount_history, this.model.campaign.views_history);
+                // dashboardPlot(t, a);
+
       return this;
     },
   }),

@@ -79,8 +79,9 @@
                     [28, 26 + e()],
                     [29, 27 + e()],
                     [30, 31 + e()]
-                ],
-                r = ($.plot($("#chart_2"), [{
+                ];
+            function dashboardPlot(t, a) {
+                var r = ($.plot($("#chart_2"), [{
                     data: t,
                     label: "Invested amount",
                     lines: {
@@ -134,16 +135,18 @@
                         tickColor: "#eee"
                     }
                 }), null);
-            $("#chart_2").bind("plothover", function(e, t, a) {
-                if ($("#x").text( t.x.toFixed(2)), $("#y").text(t.y.toFixed(2)), a) {
-                    if (r != a.dataIndex) {
-                        r = a.dataIndex, $("#tooltip").remove();
-                        var o = a.datapoint[0].toFixed(2),
-                            s = a.datapoint[1].toFixed(2);
-                        i(a.pageX, a.pageY, a.series.label + " of " + o + " = " + s)
-                    }
-                } else $("#tooltip").remove(), r = null
-            })
+                $("#chart_2").bind("plothover", function(e, t, a) {
+                    if ($("#x").text( t.x.toFixed(2)), $("#y").text(t.y.toFixed(2)), a) {
+                        if (r != a.dataIndex) {
+                            r = a.dataIndex, $("#tooltip").remove();
+                            var o = a.datapoint[0].toFixed(2),
+                                s = a.datapoint[1].toFixed(2);
+                            i(a.pageX, a.pageY, a.series.label + " of " + o + " = " + s)
+                        }
+                    } else $("#tooltip").remove(), r = null
+                })
+            }
+            // dashboardPlot(t, a);
 
 
 
